@@ -7,7 +7,6 @@ from aiominer_discord import Webhook
 import os
 import re
 from urllib.request import Request, urlopen
-import time
 
 #Variables N Things
 file_name='tweet.aio'
