@@ -11,7 +11,7 @@ from urllib.request import Request, urlopen
 #Variables N Things
 file_name='tweet.aio'
 hook_url='{{DISCORD_WEBHOOK_HERE}}'
-keyword='pow '
+keyword='pow'
 
 
 def purge_file():
@@ -63,6 +63,8 @@ for tweet in get_tweets('ubiqannbot',pages=1):
           webpage.split('</tr>', maxsplit=1)[0]
           if keyword in webpage.lower():
               #Send a Discord
-              send_discord_msg(AIOMiner)
+              send_discord_msg("[PoW ] + str(AIOMiner))
+          else:
+              send_discord_msg("[No-PoW ] + str(AIOMiner))
           #We only care about the first one, get out of this situation
           exit()
