@@ -5,10 +5,13 @@
 from twitter_scraper import get_tweets
 from aiominer_discord import Webhook
 import os
+import re
+from urllib.request import Request, urlopen
 
 #Variables N Things
 file_name='tweet.aio'
 hook_url='{{DISCORD_WEBHOOK_HERE}}'
+keyword='pow '
 
 
 def purge_file():
@@ -50,7 +53,16 @@ for tweet in get_tweets('ubiqannbot',pages=1):
           purge_file()
           #Write the new one
           append_file(AIOMiner)
-          #Send a Discord
-          send_discord_msg(AIOMiner)
+          #Gets the bitcointalk URL from Tweet
+          url = re.findall('https://bitcointalk.*', AIOMiner)
+          #Opens the URL and makes it readable
+          req = Request(url[0], headers={'User-Agent': 'Mozilla/5.0'})
+          web_byte = urlopen(req).read()
+          webpage = web_byte.decode('utf-8', 'ignore')
+          #Splits the webpage so we only get the first post
+          webpage.split('</tr>', maxsplit=1)[0]
+          if keyword in webpage.lower():
+              #Send a Discord
+              send_discord_msg(AIOMiner)
           #We only care about the first one, get out of this situation
           exit()
