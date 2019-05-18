@@ -11,7 +11,7 @@ from urllib.request import Request, urlopen
 #Variables N Things
 file_name='tweet.aio'
 hook_url='{{DISCORD_WEBHOOK_HERE}}'
-keyword='pow'
+keyword='pow '
 
 
 def purge_file():
