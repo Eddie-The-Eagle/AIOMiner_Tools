@@ -11,7 +11,7 @@ from urllib.request import Request, urlopen
 #Variables N Things
 file_name='tweet.aio'
 hook_url='{{DISCORD_WEBHOOK_HERE}}'
-keyword='pow '
+keyword_list=['pow ', 'pow/', 'algo', '[pow]']
 
 
 def purge_file():
@@ -61,10 +61,11 @@ for tweet in get_tweets('ubiqannbot',pages=1):
           webpage = web_byte.decode('utf-8', 'ignore')
           #Splits the webpage so we only get the first post
           webpage.split('</tr>', maxsplit=1)[0]
-          if keyword in webpage.lower():
-              #Send a Discord
-              send_discord_msg("[PoW ] + str(AIOMiner))
-          else:
-              send_discord_msg("[No-PoW ] + str(AIOMiner))
-          #We only care about the first one, get out of this situation
+          for keyword in keyword_list:
+             if keyword in webpage.lower():
+                #Send a Discord
+                send_discord_msg("[PoW]" + str(AIOMiner))
+                exit()
+          send_discord_msg("[No-PoW]" + str(AIOMiner))
           exit()
+          #We only care about the first one, get out of this situation
