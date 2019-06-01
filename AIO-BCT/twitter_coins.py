@@ -9,6 +9,7 @@ import re
 from urllib.request import Request, urlopen
 
 #Variables N Things
+poweredby_line= "\nPowered by AIOMiner - The All In One Miner https://aiominer.com/"
 file_name='tweet.aio'
 hook_url='{{DISCORD_WEBHOOK_HERE}}'
 keyword_list=['pow ', 'pow/', 'algo', '[pow]']
@@ -64,8 +65,8 @@ for tweet in get_tweets('ubiqannbot',pages=1):
           for keyword in keyword_list:
              if keyword in webpage.lower():
                 #Send a Discord
-                send_discord_msg("[PoW]" + str(AIOMiner))
+                send_discord_msg("[PoW]" + str(AIOMiner) + poweredby_line)
                 exit()
-          send_discord_msg("[No-PoW]" + str(AIOMiner))
+          send_discord_msg("[No-PoW]" + str(AIOMiner) + poweredby_line)
           exit()
           #We only care about the first one, get out of this situation
