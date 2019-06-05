@@ -14,6 +14,7 @@ hook_url='{{DISCORD_WEBHOOK_HERE}}'
 keyword_list=['pow ', 'pow/', 'algo', '[pow]', '/pow']
 
 
+
 def purge_file():
     file = open(file_name,'w+')
     file.truncate(0)
