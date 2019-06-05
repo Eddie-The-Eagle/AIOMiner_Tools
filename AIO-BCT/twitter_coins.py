@@ -9,10 +9,9 @@ import re
 from urllib.request import Request, urlopen
 
 #Variables N Things
-poweredby_line= "\nPowered by AIOMiner - The All In One Miner https://aiominer.com/"
 file_name='tweet.aio'
 hook_url='{{DISCORD_WEBHOOK_HERE}}'
-keyword_list=['pow ', 'pow/', 'algo', '[pow]']
+keyword_list=['pow ', 'pow/', 'algo', '[pow]', '/pow']
 
 
 def purge_file():
@@ -65,8 +64,8 @@ for tweet in get_tweets('ubiqannbot',pages=1):
           for keyword in keyword_list:
              if keyword in webpage.lower():
                 #Send a Discord
-                send_discord_msg("[PoW]" + str(AIOMiner) + poweredby_line)
+                send_discord_msg("[PoW]" + str(AIOMiner))
                 exit()
-          send_discord_msg("[No-PoW]" + str(AIOMiner) + poweredby_line)
+          send_discord_msg("[No-PoW]" + str(AIOMiner))
           exit()
           #We only care about the first one, get out of this situation
